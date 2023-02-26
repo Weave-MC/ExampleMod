@@ -9,7 +9,7 @@ import org.objectweb.asm.tree.LdcInsnNode
 import org.objectweb.asm.tree.MethodInsnNode
 import org.objectweb.asm.tree.MethodNode
 
-class MinecraftHook: Hook("net.minecraft.client.Minecraft") {
+class MinecraftHook: Hook("net/minecraft/client/Minecraft") {
     override fun transform(cn: ClassNode) {
         for (method: MethodNode in cn.methods) {
             if (method.name.equals("startGame")) {
