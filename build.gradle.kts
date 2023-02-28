@@ -11,11 +11,11 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.Weave-MC:Weave-Api:552b206a3b")
+    implementation("com.github.Weave-MC:Weave-Loader:f8caa7184e")
 }
 
 tasks.jar {
     manifest.attributes(
-        "Weave-Entry" to "com.example.mod.Entry"
+        "Weave-Entry" to "com.example.mod.ExampleMod"
     )
 }

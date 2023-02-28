@@ -1,6 +1,5 @@
 package com.example.mod.hooks
-
-import club.maxstats.weave.api.hook.Hook
+import club.maxstats.weave.loader.api.Hook
 import org.objectweb.asm.Opcodes
 import org.objectweb.asm.tree.ClassNode
 import org.objectweb.asm.tree.FieldInsnNode
@@ -10,7 +9,7 @@ import org.objectweb.asm.tree.MethodInsnNode
 import org.objectweb.asm.tree.MethodNode
 
 class MinecraftHook: Hook("net/minecraft/client/Minecraft") {
-    override fun transform(cn: ClassNode) {
+    override fun transform(cn: ClassNode, callback: Callback) {
         for (method: MethodNode in cn.methods) {
             if (method.name.equals("startGame")) {
                 this.startGameInject(method)
