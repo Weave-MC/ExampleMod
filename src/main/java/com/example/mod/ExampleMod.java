@@ -8,9 +8,6 @@ import club.maxstats.weave.loader.api.event.impl.InputEvent;
 import org.jetbrains.annotations.NotNull;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
-import org.objectweb.asm.tree.FieldInsnNode;
-import org.objectweb.asm.tree.InsnList;
-import org.objectweb.asm.tree.LdcInsnNode;
 import org.objectweb.asm.tree.MethodInsnNode;
 
 public class ExampleMod implements ModInitializer {
@@ -20,11 +17,14 @@ public class ExampleMod implements ModInitializer {
             cn.methods.stream()
                     .filter(m -> m.name.equals("startGame"))
                     .findFirst().orElseThrow()
-                    .instructions.insert(new InsnList() {{
-                        add(new FieldInsnNode(Opcodes.GETSTATIC, "java/lang/System", "out", "Ljava/io/PrintStream;"));
-                        add(new LdcInsnNode("Hello World from Minecraft#startGame"));
-                        add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "java/io/PrintStream", "println", "(Ljava/lang/String;)V"));
-                    }});
+                    .instructions.insert(
+                            new MethodInsnNode(
+                                    Opcodes.INVOKESTATIC,
+                                    Type.getInternalName(this.getClass()),
+                                    "onStart",
+                                    "()V"
+                            )
+                    );
         });
 
         EventBus.INSTANCE.subscribe(this);
@@ -33,5 +33,9 @@ public class ExampleMod implements ModInitializer {
     @SubscribeEvent
     public void onInput(InputEvent e) {
         System.out.println("Pressed: " + e.getKeycode());
+    }
+
+    public static void onStart() {
+        System.out.println("Hello World from Minecraft#startGame");
     }
 }
