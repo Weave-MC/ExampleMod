@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.8.0"
+    java
 }
 
 group = "com.example"
@@ -11,7 +11,11 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.Weave-MC:Weave-Loader:f8caa7184e")
+    implementation("com.github.Weave-MC:Weave-Loader:6015cdb81f")
+}
+
+tasks.compileJava {
+    options.release.set(11)
 }
 
 tasks.jar {
