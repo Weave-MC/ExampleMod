@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.Weave-MC:Weave-Loader:6015cdb81f")
+    implementation("com.github.Weave-MC:Weave-Loader:4c45210e52")
 }
 
 minecraft {
@@ -28,4 +28,9 @@ tasks.jar {
     manifest.attributes(
         "Weave-Entry" to "com.example.mod.ExampleMod"
     )
+}
+
+minecraft {
+    version = "1.8.9"
+    mappings = "stable_22"
 }
