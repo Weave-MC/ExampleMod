@@ -1,10 +1,12 @@
 package com.example.mod;
 
-import club.maxstats.weave.loader.api.HookManager;
 import club.maxstats.weave.loader.api.ModInitializer;
+import club.maxstats.weave.loader.api.HookManager;
 import club.maxstats.weave.loader.api.event.EventBus;
-import club.maxstats.weave.loader.api.event.annotation.SubscribeEvent;
-import club.maxstats.weave.loader.api.event.impl.InputEvent;
+import club.maxstats.weave.loader.api.event.InputEvent;
+import club.maxstats.weave.loader.api.event.SubscribeEvent;
+import club.maxstats.weave.loader.util.ExtensionsKt;
+import kotlin.Unit;
 import org.jetbrains.annotations.NotNull;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
@@ -27,14 +29,10 @@ public class ExampleMod implements ModInitializer {
                     );
         });
 
-        EventBus.INSTANCE.subscribe(this);
+        EventBus.INSTANCE.subscribe(InputEvent.class, e -> {
+            System.out.println("Pressed: " + e.getKeyCode());
+        });
     }
-
-    @SubscribeEvent
-    public void onInput(InputEvent e) {
-        System.out.println("Pressed: " + e.getKeycode());
-    }
-
     public static void onStart() {
         System.out.println("Hello World from Minecraft#startGame");
     }

@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.Weave-MC:Weave-Loader:6015cdb81f")
+    implementation("com.github.Weave-MC:Weave-Loader:4c45210e52")
 }
 
 tasks.compileJava {
