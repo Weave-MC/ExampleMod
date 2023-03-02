@@ -7,7 +7,10 @@ import club.maxstats.weave.loader.api.event.InputEvent;
 import club.maxstats.weave.loader.api.event.SubscribeEvent;
 import club.maxstats.weave.loader.util.ExtensionsKt;
 import kotlin.Unit;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.ChatComponentText;
 import org.jetbrains.annotations.NotNull;
+import org.lwjgl.input.Keyboard;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.MethodInsnNode;
@@ -30,7 +33,9 @@ public class ExampleMod implements ModInitializer {
         });
 
         EventBus.INSTANCE.subscribe(InputEvent.class, e -> {
-            System.out.println("Pressed: " + e.getKeyCode());
+            Minecraft.getMinecraft().thePlayer.addChatMessage(
+                    new ChatComponentText("Pressed: " + Keyboard.getKeyName(e.getKeyCode()))
+            );
         });
     }
     public static void onStart() {
