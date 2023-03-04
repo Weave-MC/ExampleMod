@@ -8,11 +8,12 @@ version = "1.0"
 
 repositories {
     mavenCentral()
+    mavenLocal()
     maven("https://jitpack.io")
 }
 
 dependencies {
-    implementation("com.github.Weave-MC:Weave-Loader:4c45210e52")
+    implementation("com.github.Weave-MC:Weave-Loader:bf715e2b8d")
 }
 
 minecraft {

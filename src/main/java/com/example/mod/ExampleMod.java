@@ -2,11 +2,9 @@ package com.example.mod;
 
 import club.maxstats.weave.loader.api.ModInitializer;
 import club.maxstats.weave.loader.api.HookManager;
+import club.maxstats.weave.loader.api.event.ChatReceivedEvent;
 import club.maxstats.weave.loader.api.event.EventBus;
 import club.maxstats.weave.loader.api.event.InputEvent;
-import club.maxstats.weave.loader.api.event.SubscribeEvent;
-import club.maxstats.weave.loader.util.ExtensionsKt;
-import kotlin.Unit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 import org.jetbrains.annotations.NotNull;
@@ -36,6 +34,13 @@ public class ExampleMod implements ModInitializer {
             Minecraft.getMinecraft().thePlayer.addChatMessage(
                     new ChatComponentText("Pressed: " + Keyboard.getKeyName(e.getKeyCode()))
             );
+        });
+
+        EventBus.INSTANCE.subscribe(ChatReceivedEvent.class, e -> {
+            if (e.getMessage().getUnformattedText().contains("Hello Computer")) {
+                e.setCancelled(true);
+                Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Hello Player"));
+            }
         });
     }
     public static void onStart() {
