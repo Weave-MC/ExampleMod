@@ -1,6 +1,6 @@
 plugins {
     java
-    id("com.github.weave-mc.weave") version ("3ad11a0fd5")
+    id("com.github.weave-mc.weave") version "85846a675a"
 }
 
 group = "com.example"
@@ -13,12 +13,11 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.Weave-MC:Weave-Loader:bf715e2b8d")
+    implementation("com.github.weave-mc:Weave-Loader:e92617f4e2")
 }
 
 minecraft {
-    version = "1.8.9"
-    mappings = "stable_22"
+    version.set("1.8.9")
 }
 
 tasks.compileJava {

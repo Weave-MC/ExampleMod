@@ -2,9 +2,7 @@ package com.example.mod;
 
 import club.maxstats.weave.loader.api.ModInitializer;
 import club.maxstats.weave.loader.api.HookManager;
-import club.maxstats.weave.loader.api.event.ChatReceivedEvent;
-import club.maxstats.weave.loader.api.event.EventBus;
-import club.maxstats.weave.loader.api.event.InputEvent;
+import club.maxstats.weave.loader.api.event.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 import org.jetbrains.annotations.NotNull;
@@ -15,7 +13,7 @@ import org.objectweb.asm.tree.MethodInsnNode;
 
 public class ExampleMod implements ModInitializer {
     @Override
-    public void preinit(@NotNull HookManager hookManager) {
+    public void preInit(@NotNull HookManager hookManager) {
         hookManager.register("net/minecraft/client/Minecraft", cn -> {
             cn.methods.stream()
                     .filter(m -> m.name.equals("startGame"))
@@ -36,8 +34,8 @@ public class ExampleMod implements ModInitializer {
             );
         });
 
-        EventBus.INSTANCE.subscribe(ChatReceivedEvent.class, e -> {
-            if (e.getMessage().getUnformattedText().contains("Hello Computer")) {
+        EventBus.INSTANCE.subscribe(ChatSentEvent.class, e -> {
+            if (e.getMessage().equalsIgnoreCase("hello computer")) {
                 e.setCancelled(true);
                 Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText("Hello Player"));
             }
