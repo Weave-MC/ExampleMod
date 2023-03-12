@@ -1,20 +1,10 @@
 plugins {
     java
-    id("com.github.weave-mc.weave") version "85846a675a"
+    id("com.github.weave-mc.weave") version "ec59a8bceb"
 }
 
 group = "com.example"
 version = "1.0"
-
-repositories {
-    mavenCentral()
-    mavenLocal()
-    maven("https://jitpack.io")
-}
-
-dependencies {
-    implementation("com.github.weave-mc:Weave-Loader:e92617f4e2")
-}
 
 minecraft {
     version.set("1.8.9")
