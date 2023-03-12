@@ -1,9 +1,12 @@
 package com.example.mod;
 
+import club.maxstats.weave.loader.api.CommandBus;
 import club.maxstats.weave.loader.api.ModInitializer;
 import club.maxstats.weave.loader.api.HookManager;
 import club.maxstats.weave.loader.api.event.*;
+import com.example.mod.command.TestCommand;
 import com.example.mod.listener.RenderGameOverlayListener;
+import kotlin.Unit;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 import org.lwjgl.input.Keyboard;
@@ -43,10 +46,7 @@ public class ExampleMod implements ModInitializer {
             }
         });
 
-        EventBus.INSTANCE.subscribe(ShutdownEvent.class, e-> {
-            System.out.println("Shutdown Event");
-        });
-
+        EventBus.INSTANCE.subscribe(ShutdownEvent.class, e -> System.out.println("Shutdown Event"));
         EventBus.INSTANCE.subscribe(ChatSentEvent.class, e -> {
             if (e.getMessage().equals("Test")) {
                 e.setCancelled(true);
@@ -55,15 +55,12 @@ public class ExampleMod implements ModInitializer {
         });
 
         EventBus.INSTANCE.subscribe(new RenderGameOverlayListener());
+        EventBus.INSTANCE.subscribe(StartGameEvent.Pre.class, e -> System.out.println("Pre StartGame"));
+        EventBus.INSTANCE.subscribe(StartGameEvent.Post.class, e -> System.out.println("Post StartGame"));
 
-        EventBus.INSTANCE.subscribe(StartGameEvent.Pre.class, e -> {
-            System.out.println("Pre StartGame");
-        });
-
-        EventBus.INSTANCE.subscribe(StartGameEvent.Post.class, e -> {
-            System.out.println("Post StartGame");
-        });
+        CommandBus.INSTANCE.register(new TestCommand());
     }
+
     public static void onStart() {
         System.out.println("Hello World from Minecraft#startGame");
     }
