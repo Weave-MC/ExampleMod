@@ -6,6 +6,7 @@ import club.maxstats.weave.loader.api.HookManager;
 import club.maxstats.weave.loader.api.event.*;
 import com.example.mod.command.TestCommand;
 import com.example.mod.hook.MinecraftHook;
+import com.example.mod.listener.RenderGameOverlayListener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 import org.lwjgl.input.Keyboard;
@@ -29,5 +30,7 @@ public class ExampleMod implements ModInitializer {
         EventBus.INSTANCE.subscribe(RenderHandEvent.class, e -> {
             e.setCancelled(true);
         });
+
+        EventBus.INSTANCE.subscribe(new RenderGameOverlayListener());
     }
 }
