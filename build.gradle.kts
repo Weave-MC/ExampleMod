@@ -13,7 +13,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("com.github.Weave-MC:Weave-Loader:454f9a8cca")
+    compileOnly("com.github.weave-mc:weave-loader:96b318be13")
 }
 
 tasks.compileJava {

@@ -1,8 +1,8 @@
 package com.example.mod;
 
-import club.maxstats.weave.loader.api.CommandBus;
 import club.maxstats.weave.loader.api.ModInitializer;
 import club.maxstats.weave.loader.api.HookManager;
+import club.maxstats.weave.loader.api.command.CommandBus;
 import club.maxstats.weave.loader.api.event.*;
 import com.example.mod.command.TestCommand;
 import com.example.mod.hook.MinecraftHook;
@@ -17,20 +17,17 @@ public class ExampleMod implements ModInitializer {
         System.out.println("Initializing ExampleMod!");
 
         hookManager.register(new MinecraftHook());
-        CommandBus.INSTANCE.register(new TestCommand());
+        CommandBus.register(new TestCommand());
 
-        EventBus.INSTANCE.subscribe(KeyboardEvent.class, e -> {
+        EventBus.subscribe(KeyboardEvent.class, e -> {
             if (Minecraft.getMinecraft().currentScreen == null && e.getKeyState()) {
                 Minecraft.getMinecraft().thePlayer.addChatMessage(
                         new ChatComponentText("Key Pressed: " + Keyboard.getKeyName(e.getKeyCode()))
                 );
             }
         });
+        EventBus.subscribe(RenderHandEvent.class, e -> e.setCancelled(true));
 
-        EventBus.INSTANCE.subscribe(RenderHandEvent.class, e -> {
-            e.setCancelled(true);
-        });
-
-        EventBus.INSTANCE.subscribe(new RenderGameOverlayListener());
+        EventBus.subscribe(new RenderGameOverlayListener());
     }
 }
