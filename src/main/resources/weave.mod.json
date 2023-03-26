@@ -1,0 +1,8 @@
+{
+  "mixins": [
+    "examplemod.mixins.json"
+  ],
+  "entrypoints": [
+    "com.example.mod.ExampleMod"
+  ]
+}

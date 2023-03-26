@@ -29,6 +29,6 @@ public class MinecraftHook extends Hook {
 
     @SuppressWarnings("unused")
     public static void onStartGame() {
-        System.out.println("onStartGame");
+        System.out.println("Hook Test");
     }
 }

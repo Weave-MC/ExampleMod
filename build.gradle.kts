@@ -10,18 +10,15 @@ minecraft.version("1.8.9")
 
 repositories {
     maven("https://jitpack.io")
+    maven("https://repo.spongepowered.org/maven/")
 }
 
 dependencies {
-    compileOnly("com.github.weave-mc:weave-loader:96b318be13")
+    compileOnly("com.github.weave-mc:weave-loader:2e22997d5b")
+
+    compileOnly("org.spongepowered:mixin:0.8.5")
 }
 
 tasks.compileJava {
     options.release.set(11)
-}
-
-tasks.jar {
-    manifest.attributes(
-        "Weave-Entry" to "com.example.mod.ExampleMod"
-    )
 }
