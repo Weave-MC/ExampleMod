@@ -1,11 +1,9 @@
 package com.example.mod;
 
 import club.maxstats.weave.loader.api.ModInitializer;
-import club.maxstats.weave.loader.api.HookManager;
 import club.maxstats.weave.loader.api.command.CommandBus;
 import club.maxstats.weave.loader.api.event.*;
 import com.example.mod.command.TestCommand;
-import com.example.mod.hook.MinecraftHook;
 import com.example.mod.listener.RenderGameOverlayListener;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
@@ -13,10 +11,9 @@ import org.lwjgl.input.Keyboard;
 
 public class ExampleMod implements ModInitializer {
     @Override
-    public void preInit(HookManager hookManager) {
+    public void init() {
         System.out.println("Initializing ExampleMod!");
 
-        hookManager.register(new MinecraftHook());
         CommandBus.register(new TestCommand());
 
         EventBus.subscribe(KeyboardEvent.class, e -> {
