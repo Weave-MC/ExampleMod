@@ -6,12 +6,7 @@ import net.minecraft.util.ChatComponentText;
 
 public class TestCommand extends Command {
     public TestCommand() {
-        super("test");
-    }
-
-    @Override
-    public String[] getAliases() {
-        return new String[]{"sometest", "somealias", "t"};
+        super("test", "somealias", "t");
     }
 
     @Override
