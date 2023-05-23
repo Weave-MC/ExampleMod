@@ -1,8 +1,8 @@
 package com.example.mod;
 
-import club.maxstats.weave.loader.api.ModInitializer;
-import club.maxstats.weave.loader.api.command.CommandBus;
-import club.maxstats.weave.loader.api.event.*;
+import net.weavemc.loader.api.ModInitializer;
+import net.weavemc.loader.api.command.CommandBus;
+import net.weavemc.loader.api.event.*;
 import com.example.mod.command.TestCommand;
 import com.example.mod.listener.RenderGameOverlayListener;
 import net.minecraft.client.Minecraft;
@@ -11,7 +11,7 @@ import org.lwjgl.input.Keyboard;
 
 public class ExampleMod implements ModInitializer {
     @Override
-    public void init() {
+    public void preInit() {
         System.out.println("Initializing ExampleMod!");
 
         CommandBus.register(new TestCommand());
