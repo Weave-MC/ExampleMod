@@ -1,26 +1,28 @@
 plugins {
-    java
-    id("com.github.weave-mc.weave-gradle") version "649dba7468"
+    id("net.weavemc.gradle") version "1.0.0-PRE"
 }
 
 group = "com.example"
 version = "1.0.0"
 
-minecraft.version("1.8.9")
+minecraft {
+    configure {
+        name = "ExampleMod"
+        modId = "examplemod"
+        entryPoints = listOf("com.example.mod.ExampleMod")
+        mixinConfigs = listOf("examplemod.mixins.json")
+        mcpMappings()
+    }
+    version("1.8.9")
+}
 
 repositories {
-    maven("https://jitpack.io") {
-        name = "WeaveMC's Jitpack"
-        content {
-            includeGroup("com.github.weave-mc")
-        }
-    }
+    maven("https://repo.weavemc.dev/releases")
     maven("https://repo.spongepowered.org/maven/")
 }
 
 dependencies {
-    compileOnly("com.github.weave-mc:weave-loader:v0.2.4")
-
+    compileOnly("net.weavemc.api:common:1.0.0-b.2")
     compileOnly("org.spongepowered:mixin:0.8.5")
 }
 
