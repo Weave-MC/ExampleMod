@@ -4,12 +4,17 @@ plugins {
 }
 
 group = "com.example"
-version = "1.0"
+version = "1.0.0"
 
 minecraft.version("1.8.9")
 
 repositories {
-    maven("https://jitpack.io")
+    maven("https://jitpack.io") {
+        name = "WeaveMC's Jitpack"
+        content {
+            includeGroup("com.github.weave-mc")
+        }
+    }
     maven("https://repo.spongepowered.org/maven/")
 }
 
@@ -19,6 +24,10 @@ dependencies {
     compileOnly("org.spongepowered:mixin:0.8.5")
 }
 
-tasks.compileJava {
-    options.release.set(11)
+java {
+    withSourcesJar()
+
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+    }
 }
