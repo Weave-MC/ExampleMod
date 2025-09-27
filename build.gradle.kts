@@ -17,7 +17,7 @@ minecraft {
 }
 
 repositories {
-    maven("https://repo.weavemc.dev/releases")
+    maven("https://repo.weavemc.net/releases")
     maven("https://repo.spongepowered.org/maven/")
 }
 
