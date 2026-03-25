@@ -25,6 +25,8 @@ public class MinecraftHook extends Hook {
                                 "()V"
                         )
                 ));
+
+        System.out.println("onStartGame transformed");
     }
 
     @SuppressWarnings("unused")

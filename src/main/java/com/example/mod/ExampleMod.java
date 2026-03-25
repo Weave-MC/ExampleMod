@@ -1,21 +1,27 @@
 package com.example.mod;
 
+import com.example.mod.listener.RenderGameOverlayEventListener;
+import net.weavemc.api.KeyboardEvent;
 import net.weavemc.api.ModInitializer;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import net.weavemc.api.event.EventBus;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.instrument.Instrumentation;
 
 public class ExampleMod implements ModInitializer {
-    private final Logger logger = LogManager.getLogger();
-
     @Override
     public void init() {
-        logger.info("Hello from ExampleMod!");
+        System.out.println("Hello from ExampleMod!");
+
+        EventBus.subscribe(new RenderGameOverlayEventListener());
+
+        EventBus.subscribe(KeyboardEvent.class, (e) -> {
+            int keyCode = e.getKeyCode();
+            System.out.println("Key pressed: " + keyCode);
+        });
     }
 
-    //TODO: This will be removed
-    @SuppressWarnings({"deprecation", "RedundantSuppression"})
-    @Override public void preInit(@NotNull Instrumentation instrumentation) {}
+    @Override public void preInit(@NotNull Instrumentation instrumentation) {
+        System.out.println("This message is printed before Minecraft initialises");
+    }
 }
