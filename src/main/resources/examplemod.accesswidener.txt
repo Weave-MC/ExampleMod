@@ -1,0 +1,14 @@
+accessWidener v2 mcp-named
+
+# The format is:
+# 1. <access> class <className>
+# 2. <access> method <className> <methodName> <methodDesc>
+# 3. <access> field <className> <fieldName> <fieldDesc>
+# See com.grappenmaker.mappings.AccessType for more details about access types.
+# Also, https://docs.fabricmc.net/develop/class-tweakers/access-widening is a great resource as most things are the same.
+
+# Pro tip: IntelliJ, you can sort the entries by Edit -> Sort Lines
+
+accessible method net/minecraft/client/Minecraft clickMouse ()V
+accessible field net/minecraft/client/Minecraft timer Lnet/minecraft/util/Timer;
+accessible field net/minecraft/entity/Entity isInWeb Z

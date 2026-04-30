@@ -12,6 +12,7 @@ weave {
         entryPoints = listOf("com.example.mod.ExampleMod")
         hooks = listOf("com.example.mod.hook.MinecraftHook")
         mixinConfigs = listOf("examplemod.mixins.json")
+        accessWideners = listOf("examplemod.accesswidener.txt")
         mcpMappings()
     }
     version("1.8.9")
