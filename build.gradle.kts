@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.9.23"
+    kotlin("jvm") version "2.3.0"
     id("net.weavemc.gradle") version "1.1.0"
 }
 
@@ -34,14 +34,6 @@ dependencies {
     implementation("net.weavemc.api:api-v1_8:1.1.0") // For 1.8 events
 
     compileOnly("org.spongepowered:mixin:0.8.5")
-
-    implementation(kotlin("stdlib", "1.9.23"))
-}
-
-configurations.all {
-    resolutionStrategy {
-        force("org.jetbrains.kotlin:kotlin-stdlib:1.9.23")
-    }
 }
 
 java {
