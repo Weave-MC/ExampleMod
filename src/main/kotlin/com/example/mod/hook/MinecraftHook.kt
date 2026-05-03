@@ -8,21 +8,17 @@ import org.objectweb.asm.tree.MethodInsnNode
 
 class MinecraftHook : Hook("net/minecraft/client/Minecraft") {
     override fun transform(node: ClassNode, cfg: AssemblerConfig) {
-        node.methods.stream()
-            .filter { method -> method.name == "startGame" }
-            .findFirst()
-            .ifPresent { method ->
-                method.instructions.insert(
-                    MethodInsnNode(
-                        Opcodes.INVOKESTATIC,
-                        Type.getInternalName(MinecraftHook::class.java),
-                        "onStartGame",
-                        "()V"
-                    )
+        node.methods.firstOrNull { method -> method.name == "startGame" }?.let { method ->
+            method.instructions.insert(
+                MethodInsnNode(
+                    Opcodes.INVOKESTATIC,
+                    Type.getInternalName(MinecraftHook::class.java),
+                    "onStartGame",
+                    "()V"
                 )
-            }
-
-        println("onStartGame transformed")
+            )
+            println("onStartGame transformed")
+        }
     }
 
     companion object {

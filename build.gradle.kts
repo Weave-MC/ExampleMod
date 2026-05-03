@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     kotlin("jvm") version "1.9.23"
     id("net.weavemc.gradle") version "1.1.0"
@@ -38,24 +36,16 @@ dependencies {
     compileOnly("org.spongepowered:mixin:0.8.5")
 
     implementation(kotlin("stdlib", "1.9.23"))
-    implementation(kotlin("stdlib-jdk7", "1.9.23"))
-    implementation(kotlin("stdlib-jdk8", "1.9.23"))
 }
 
 configurations.all {
     resolutionStrategy {
         force("org.jetbrains.kotlin:kotlin-stdlib:1.9.23")
-        force("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.23")
-        force("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.23")
     }
 }
 
 java {
     withSourcesJar()
-
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(8))
-    }
 }
 
 kotlin {

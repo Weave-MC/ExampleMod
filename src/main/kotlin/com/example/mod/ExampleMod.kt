@@ -6,6 +6,7 @@ import net.weavemc.api.ModInitializer
 import net.weavemc.api.event.EventBus
 import java.lang.instrument.Instrumentation
 
+@Suppress("unused")
 class ExampleMod : ModInitializer {
     override fun init() {
         println("Hello from ExampleMod!")
