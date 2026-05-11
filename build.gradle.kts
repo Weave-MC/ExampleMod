@@ -24,11 +24,12 @@ repositories {
     maven("https://gitlab.com/api/v4/projects/80566527/packages/maven")
 }
 
+var weaveVersion = "1.2.0"
 dependencies {
-    implementation("net.weavemc:loader:1.2.0") // For advanced modifications
-    implementation("net.weavemc:internals:1.2.0")
-    implementation("net.weavemc.api:api:1.2.0")
-    implementation("net.weavemc.api:api-v1_8:1.2.0") // For 1.8 events
+    implementation("net.weavemc:loader:$weaveVersion") // For advanced modifications
+    implementation("net.weavemc:internals:$weaveVersion")
+    implementation("net.weavemc.api:api:$weaveVersion")
+    implementation("net.weavemc.api:api-v1_8:$weaveVersion") // For 1.8 events
 
     compileOnly("org.spongepowered:mixin:0.8.5")
 }
