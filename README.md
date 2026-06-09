@@ -2,6 +2,9 @@
 
 This repository shows how to setup a [Gradle](https://gradle.org) project with the [Weave Gradle plugin](https://github.com/Weave-MC/Weave-Gradle) to develop mods for Weave.
 
+> [!NOTE]  
+> If you prefer developing in Kotlin instead of Java, check out the Kotlin template repository at [Weave-MC/ExampleMod-Kotlin](https://github.com/Weave-MC/ExampleMod-Kotlin).
+
 ## How to start?
 
 To use this repository as a template, click on the green **Use this template** button. 
